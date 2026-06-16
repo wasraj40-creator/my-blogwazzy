@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional insights on design, technology, and digital innovation.">
+    <title>Professional Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        body.light {
+            background: #ffffff;
+            color: #1f2937;
+        }
+        
+        body.dark {
+            background: #0f172a;
+            color: #f1f5f9;
+        }
+        
+        .container {
+            max-width: 55rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        header {
+            border-bottom: 1px solid;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        body.light header {
+            border-color: #e5e7eb;
+            background: #ffffff;
+        }
+        
+        body.dark header {
+            border-color: #1e293b;
+            background: #0f172a;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1rem;
+            font-weight: 700;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: inherit;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+        }
+        
+        .theme-btn {
+            border: 1px solid;
+            border-radius: 0.375rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+        }
+        
+        body.light .theme-btn {
+            background: #f0f4f8;
+            border-color: #e5e7eb;
+            color: #1f2937;
+        }
+        
+        body.dark .theme-btn {
+            background: #334155;
+            border-color: #1e293b;
+            color: #f1f5f9;
+        }
+        
+        main {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        .hero {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin: 0 0 0.75rem 0;
+            line-height: 1.15;
+        }
+        
+        .hero p {
+            font-size: 1.15rem;
+            margin: 0;
+        }
+        
+        body.light .hero p {
+            color: #6b7280;
+        }
+        
+        body.dark .hero p {
+            color: #cbd5e1;
+        }
+        
+        .newsletter {
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid;
+            margin-bottom: 3rem;
+        }
+        
+        body.light .newsletter {
+            background: #f0f4f8;
+            border-color: #e5e7eb;
+        }
+        
+        body.dark .newsletter {
+            background: #334155;
+            border-color: #1e293b;
+        }
+        
+        .newsletter h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .newsletter p {
+            font-size: 0.95rem;
+            margin: 0 0 1rem 0;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .email-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid;
+            border-radius: 0.375rem;
+            font-size: 0.95rem;
+        }
+        
+        body.light .email-input {
+            background: #ffffff;
+            border-color: #e5e7eb;
+            color: #1f2937;
+        }
+        
+        body.dark .email-input {
+            background: #0f172a;
+            border-color: #1e293b;
+            color: #f1f5f9;
+        }
+        
+        .subscribe-btn {
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .post-list {
+            margin-top: 2rem;
+        }
+        
+        .post-card {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid;
+            margin-bottom: 2rem;
+        }
+        
+        body.light .post-card {
+            background: #f9fafb;
+            border-color: #e5e7eb;
+        }
+        
+        body.dark .post-card {
+            background: #1e293b;
+            border-color: #1e293b;
+        }
+        
+        .post-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            padding: 0;
+            margin-bottom: 0.5rem;
+            color: inherit;
+        }
+        
+        .post-meta {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        body.light .post-meta {
+            color: #6b7280;
+        }
+        
+        body.dark .post-meta {
+            color: #cbd5e1;
+        }
+        
+        .category {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        body.light .category {
+            background: #f0f4f8;
+            color: #1f2937;
+        }
+        
+        body.dark .category {
+            background: #334155;
+            color: #f1f5f9;
+        }
+        
+        .full-post {
+            max-width: 50rem;
+        }
+        
+        .post-header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid;
+        }
+        
+        body.light .post-header {
+            border-color: #e5e7eb;
+        }
+        
+        body.dark .post-header {
+            border-color: #1e293b;
+        }
+        
+        .post-full-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 1rem 0;
+            line-height: 1.15;
+        }
+        
+        .post-content {
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin: 1.5rem 0 0.5rem 0;
+            font-weight: 700;
+        }
+        
+        .post-content code {
+            background: rgba(0,0,0,0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+        }
+        
+        body.dark .post-content code {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .post-content pre {
+            background: rgba(0,0,0,0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        body.dark .post-content pre {
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .post-content ul, .post-content ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        .post-content li {
+            margin: 0.5rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.9rem;
+            border-top: 1px solid;
+        }
+        
+        body.light footer {
+            border-color: #e5e7eb;
+            color: #6b7280;
+        }
+        
+        body.dark footer {
+            border-color: #1e293b;
+            color: #cbd5e1;
+        }
+        
+        .back-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+        
+        .loading, .empty {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="light">
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <button class="logo" onclick="goHome()">BLOG</button>
+                <nav>
+                    <button onclick="goHome()">Home</button>
+                    <button class="theme-btn" onclick="toggleDarkMode()" id="themeBtn">🌙</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="container" id="app"></div>
+    </main>
+    
+    <footer>
+        <p>© 2024. Professional Blog. Built with love.</p>
+    </footer>
+    
+    <script>
+        const API = 'http://localhost:5000/api';
+        let darkMode = localStorage.getItem('darkMode') === 'true';
+        let posts = [];
+        let currentView = 'home';
+        let selectedPost = null;
+        
+        // Initialize
+        if (darkMode) {
+            document.body.classList.add('dark');
+            document.body.classList.remove('light');
+            document.getElementById('themeBtn').innerText = '☀️';
+        }
+        
+        function toggleDarkMode() {
+            darkMode = !darkMode;
+            localStorage.setItem('darkMode', darkMode);
+            if (darkMode) {
+                document.body.classList.add('dark');
+                document.body.classList.remove('light');
+                document.getElementById('themeBtn').innerText = '☀️';
+            } else {
+                document.body.classList.remove('dark');
+                document.body.classList.add('light');
+                document.getElementById('themeBtn').innerText = '🌙';
+            }
+        }
+        
+        function goHome() {
+            currentView = 'home';
+            selectedPost = null;
+            render();
+        }
+        
+        async function fetchPosts() {
+            try {
+                const res = await fetch(API + '/posts');
+                const data = await res.json();
+                posts = data;
+            } catch (err) {
+                console.error('Failed to fetch posts:', err);
+                posts = [
+                    { id: 1, title: 'Welcome to Your Blog', slug: 'welcome', excerpt: 'Your professional blog is ready to deploy!', content: '# Welcome\n\nYour blog is live. Deploy your backend to see posts here.', category: 'tutorial', createdAt: new Date().toISOString() }
+                ];
+            }
+        }
+        
+        async function fetchPost(slug) {
+            try {
+                const res = await fetch(API + '/posts/' + slug);
+                const data = await res.json();
+                selectedPost = data;
+                currentView = 'post';
+                render();
+            } catch (err) {
+                console.error('Failed to fetch post:', err);
+            }
+        }
+        
+        function readingTime(content) {
+            const words = content.split(/\s+/).length;
+            return Math.ceil(words / 200);
+        }
+        
+        function formatDate(dateStr) {
+            return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+        
+        function renderMarkdown(markdown) {
+            let html = markdown
+                .replace(/^### (.*?)$/gm, '<h3>$1</h3>')
+                .replace(/^## (.*?)$/gm, '<h2>$1</h2>')
+                .replace(/^# (.*?)$/gm, '<h1>$1</h1>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')
+                .replace(/`(.*?)`/g, '<code>$1</code>')
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/^- (.*?)$/gm, '<li>$1</li>')
+                .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+            return html;
+        }
+        
+        async function render() {
+            const app = document.getElementById('app');
+            
+            if (currentView === 'home') {
+                let html = `
+                    <div class="hero">
+                        <h1>Insights on Design &amp; Technology</h1>
+                        <p>In-depth articles on digital strategy, product design, and emerging tech trends</p>
+                    </div>
+                    
+                    <div class="newsletter">
+                        <h3>Stay Updated</h3>
+                        <p>Get new articles delivered to your inbox</p>
+                        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+                            <input type="email" class="email-input" placeholder="your@email.com" id="emailInput" required>
+                            <button type="submit" class="subscribe-btn">Subscribe</button>
+                        </form>
+                        <p id="subMsg" style="margin-top: 0.5rem; display: none;"></p>
+                    </div>
+                    
+                    <div class="post-list">
+                `;
+                
+                if (posts.length === 0) {
+                    html += '<p class="empty">Loading posts...</p>';
+                } else {
+                    posts.forEach(post => {
+                        html += `
+                            <article class="post-card">
+                                <button class="post-title" onclick="fetchPost('${post.slug}')">${post.title}</button>
+                                <div class="post-meta">
+                                    <span>${formatDate(post.createdAt)}</span>
+                                    <span> · </span>
+                                    <span>${readingTime(post.content)} min read</span>
+                                    ${post.category ? `<span> · </span><span class="category">${post.category}</span>` : ''}
+                                </div>
+                                <p style="margin: 0;">${post.excerpt || post.content.substring(0, 150) + '...'}</p>
+                            </article>
+                        `;
+                    });
+                }
+                html += '</div>';
+                app.innerHTML = html;
+            } else if (currentView === 'post' && selectedPost) {
+                const contentHtml = renderMarkdown(selectedPost.content);
+                app.innerHTML = `
+                    <button class="back-btn" onclick="goHome()">← Back</button>
+                    <article class="full-post">
+                        <div class="post-header">
+                            <h1 class="post-full-title">${selectedPost.title}</h1>
+                            <div class="post-meta">
+                                <span>${formatDate(selectedPost.createdAt)}</span>
+                                <span> · </span>
+                                <span>${readingTime(selectedPost.content)} min read</span>
+                                ${selectedPost.category ? `<span> · </span><span class="category">${selectedPost.category}</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <p>${contentHtml}</p>
+                        </div>
+                    </article>
+                `;
+            }
+        }
+        
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const msg = document.getElementById('subMsg');
+            msg.style.display = 'block';
+            msg.innerText = '✓ Thanks for subscribing!';
+            document.getElementById('emailInput').value = '';
+            setTimeout(() => msg.style.display = 'none', 3000);
+        }
+        
+        // Load posts on startup
+        fetchPosts().then(render);
+    </script>
+</body>
+</html>
